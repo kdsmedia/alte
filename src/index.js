@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import App from './App';
+
+// Impor komponen dengan struktur baru
+import ProtectedLayout from './ProtectedLayout';
+import LoginPage from './components/LoginPage';
 import Home from './components/Home';
 import Referral from './components/Referral';
 import Tasks from './components/Tasks';
@@ -12,8 +15,14 @@ import ErrorBoundary from './components/ErrorBoundary';
 
 const router = createBrowserRouter([
   {
+    // Rute publik untuk halaman login
     path: '/',
-    element: <App />,
+    element: <LoginPage />,
+  },
+  {
+    // Rute terlindungi yang menggunakan ProtectedLayout
+    path: '/app',
+    element: <ProtectedLayout />,
     children: [
       { index: true, element: <Home /> },
       { path: 'referral', element: <Referral /> },
