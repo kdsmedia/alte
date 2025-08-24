@@ -4,14 +4,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { auth, db } from './firebase';
 
-function App() {
+function ProtectedLayout() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
-      setLoading(true);
       if (authUser) {
         try {
           const userRef = doc(db, 'users', authUser.uid);
@@ -34,8 +33,9 @@ function App() {
           setUser(null);
         }
       } else {
+        // Jika tidak ada pengguna, arahkan kembali ke halaman login
         setUser(null);
-        navigate('/');
+        navigate('/'); 
       }
       setLoading(false);
     });
@@ -44,26 +44,21 @@ function App() {
   }, [navigate]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Memuat...</div>;
   }
 
-  if (!user) {
-    return <div>Please log in to access this application.</div>;
-  }
-
-  return (
+  // Jika setelah loading selesai tapi tidak ada user, redirect sudah ditangani di atas.
+  // Kita hanya perlu render Outlet jika ada user.
+  return user ? (
     <div className="app">
-      <header className="bg-blue-500 text-white p-4">
-        <h1 className="text-2xl font-bold">Telegram Web App</h1>
-      </header>
       <main className="p-4">
         <Outlet context={{ user, setUser }} />
       </main>
       <nav className="fixed bottom-0 w-full bg-gray-200 p-4">
-        {/* Add navigation buttons here */}
+        {/* Navigasi Anda di sini */}
       </nav>
     </div>
-  );
+  ) : null; // Tampilkan null sementara redirect terjadi
 }
 
-export default App;
+export default ProtectedLayout;
