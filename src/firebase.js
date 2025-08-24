@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   // Replace with your Firebase configuration
-  apiKey: "AIzaSyAAZOkhagszyOyTjeg847A3l1WFfF5NZHI",
+  apiKey: "AIzaSyAm-mAFWjSnvz559_zIwUTvricmV9jppKU",
   authDomain: "altime-38dbd.firebaseapp.com",
   projectId: "altime-38dbd",
-  storageBucket: "YOUR_STORAGE_BUCKET",
+  storageBucket: "altime-38dbd.firebasestorage.app",
   messagingSenderId: "475500459457",
-  appId: "YOUR_APP_ID"
+  appId: "1:475500459457:web:5cdb95db0bfa5eca08eb40"
 };
 
 const app = initializeApp(firebaseConfig);
