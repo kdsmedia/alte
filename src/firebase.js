@@ -4,11 +4,11 @@ import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   // Replace with your Firebase configuration
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
+  apiKey: "AIzaSyAAZOkhagszyOyTjeg847A3l1WFfF5NZHI",
+  authDomain: "altime-38dbd.firebaseapp.com",
+  projectId: "altime-38dbd",
   storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  messagingSenderId: "475500459457",
   appId: "YOUR_APP_ID"
 };
 
