@@ -4,6 +4,9 @@ require('dotenv').config();
 const { Telegraf } = require('telegraf');
 const { message } = require('telegraf/filters');
 
+// --> TAMBAHKAN BARIS INI UNTUK DEBUGGING <--
+console.log('Mencoba membaca token:', process.env.BOT_TOKEN);
+
 // Sekarang, process.env.BOT_TOKEN akan berisi token Anda
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
